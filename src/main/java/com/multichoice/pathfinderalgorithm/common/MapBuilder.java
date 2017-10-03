@@ -1,15 +1,16 @@
 package com.multichoice.pathfinderalgorithm.common;
 
-import com.multichoice.pathfinderalgorithm.service.impl.AStarSeachAlgorithm;
+import com.multichoice.pathfinderalgorithm.service.PathFinderService;
+import com.multichoice.pathfinderalgorithm.service.impl.PathFinderServiceImpl;
 
-public class MapBuilder implements TileMap
+public class MapBuilder implements TileMapService
 {
 
 	private int width;
 	private int height;
 	private Obstacle[][] terrain = null;
 	private boolean[][] visited = null;
-	private TileMap map;
+	private TileMapService map;
 
 	public void init() {
 
@@ -86,12 +87,12 @@ public class MapBuilder implements TileMap
 		}
 	}
 
-	public TileMap getMap() {
+	public TileMapService getMap() {
 
 		return map;
 	}
 
-	public void setMap(TileMap map) {
+	public void setMap(TileMapService map) {
 
 		this.map = map;
 	}
@@ -107,7 +108,7 @@ public class MapBuilder implements TileMap
 
 	public void findPath(int sx, int sy, int tx, int ty ) {
 
-		AStarSeachAlgorithm pathFinder = new AStarSeachAlgorithm(map, getWidth()*getHeight());
+		PathFinderService pathFinder = new PathFinderServiceImpl(map, getWidth()*getHeight());
 		Path path = pathFinder.findPath(sx, sy, tx, tx);
 
 		int length = path.getLength();

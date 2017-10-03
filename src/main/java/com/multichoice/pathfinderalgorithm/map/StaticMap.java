@@ -19,7 +19,7 @@ public class StaticMap extends MapBuilder
 		super.init();
 	}
 
-	@Override
+	//@Override
 	public void beforeInit() {
 
 		setWidth(WIDTH);

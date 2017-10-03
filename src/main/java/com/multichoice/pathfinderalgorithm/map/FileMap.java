@@ -11,7 +11,7 @@ import java.util.TreeMap;
 
 import com.multichoice.pathfinderalgorithm.common.MapBuilder;
 import com.multichoice.pathfinderalgorithm.common.Obstacle;
-import com.multichoice.pathfinderalgorithm.common.ObstacleRegistry;
+import com.multichoice.pathfinderalgorithm.common.TileMap;
 
 
 public class FileMap extends MapBuilder
@@ -30,7 +30,7 @@ public class FileMap extends MapBuilder
 		super.afterInit();
 	}
 
-	@Override
+	//@Override
 	public void beforeInit() {
 
 		lines = readFile(getFilepath());
@@ -50,7 +50,7 @@ public class FileMap extends MapBuilder
 	private void converLineToObstacles(String line, int x) {
 
 		for (int y = 0; y < line.length(); y++) {
-			Obstacle obstacle = ObstacleRegistry.getInstance(String.valueOf(line.charAt(y)));
+			Obstacle obstacle = TileMap.getInstance(String.valueOf(line.charAt(y)));
 			addObstacleToMap(x, y, obstacle);
 		}
 	}

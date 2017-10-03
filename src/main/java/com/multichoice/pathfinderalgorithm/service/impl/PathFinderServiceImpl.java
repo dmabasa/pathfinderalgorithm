@@ -6,27 +6,27 @@ import java.util.List;
 
 import com.multichoice.pathfinderalgorithm.common.ManhattanDistanceCalculator;
 import com.multichoice.pathfinderalgorithm.common.Path;
-import com.multichoice.pathfinderalgorithm.common.PathFinder;
 import com.multichoice.pathfinderalgorithm.common.Tile;
 import com.multichoice.pathfinderalgorithm.common.TileComparator;
-import com.multichoice.pathfinderalgorithm.common.TileMap;
+import com.multichoice.pathfinderalgorithm.common.TileMapService;
+import com.multichoice.pathfinderalgorithm.service.PathFinderService;
 
 
-public class AStarSeachAlgorithm implements PathFinder
+public class PathFinderServiceImpl implements PathFinderService
 {
 	private List<Tile> closed = new ArrayList<Tile>();
 	private List<Tile> open = new ArrayList<Tile>();
-	private TileMap map;
+	private TileMapService map;
 	private int maxSearchDistance;
 	private Tile[][] tiles;
 	private ManhattanDistanceCalculator costCalculator;
 
-	public AStarSeachAlgorithm(TileMap map, int maxSearchDistance) {
+	public PathFinderServiceImpl(TileMapService map, int maxSearchDistance) {
 
 		this(map, maxSearchDistance, new ManhattanDistanceCalculator());
 	}
 
-	public AStarSeachAlgorithm(TileMap map, int maxSearchDistance, ManhattanDistanceCalculator costCalculator) {
+	public PathFinderServiceImpl(TileMapService map, int maxSearchDistance, ManhattanDistanceCalculator costCalculator) {
 
 		this.costCalculator = costCalculator;
 		this.map = map;
